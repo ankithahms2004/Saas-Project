@@ -1,33 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface SkillsSkills extends Struct.ComponentSchema {
-  collectionName: 'components_skills_skills';
-  info: {
-    displayName: 'Skills';
-    icon: 'code';
-  };
-  attributes: {
-    name: Schema.Attribute.String;
-  };
-}
-
-export interface ExperienceExperience extends Struct.ComponentSchema {
-  collectionName: 'components_experience_experiences';
-  info: {
-    displayName: 'Experience';
-    icon: 'clock';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-    companyName: Schema.Attribute.String;
-    city: Schema.Attribute.String;
-    state: Schema.Attribute.String;
-    startDate: Schema.Attribute.String;
-    endDate: Schema.Attribute.String;
-    workSummery: Schema.Attribute.Text;
-  };
-}
-
 export interface SharedSlider extends Struct.ComponentSchema {
   collectionName: 'components_shared_sliders';
   info: {
@@ -90,6 +62,34 @@ export interface SharedMedia extends Struct.ComponentSchema {
   };
 }
 
+export interface SkillsSkills extends Struct.ComponentSchema {
+  collectionName: 'components_skills_skills';
+  info: {
+    displayName: 'Skills';
+    icon: 'code';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+  };
+}
+
+export interface ExperienceExperience extends Struct.ComponentSchema {
+  collectionName: 'components_experience_experiences';
+  info: {
+    displayName: 'Experience';
+    icon: 'clock';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    companyName: Schema.Attribute.String;
+    city: Schema.Attribute.String;
+    state: Schema.Attribute.String;
+    startDate: Schema.Attribute.String;
+    endDate: Schema.Attribute.String;
+    workSummery: Schema.Attribute.Text;
+  };
+}
+
 export interface EducationEducation extends Struct.ComponentSchema {
   collectionName: 'components_education_educations';
   info: {
@@ -109,13 +109,13 @@ export interface EducationEducation extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'skills.skills': SkillsSkills;
-      'experience.experience': ExperienceExperience;
       'shared.slider': SharedSlider;
       'shared.seo': SharedSeo;
       'shared.rich-text': SharedRichText;
       'shared.quote': SharedQuote;
       'shared.media': SharedMedia;
+      'skills.skills': SkillsSkills;
+      'experience.experience': ExperienceExperience;
       'education.education': EducationEducation;
     }
   }
