@@ -1,6 +1,6 @@
 import path from 'path';
 
-export default ({ env }) => {
+export default ({ env }:any) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
 
   const connections = {
