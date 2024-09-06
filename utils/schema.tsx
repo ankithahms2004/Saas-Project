@@ -1,4 +1,4 @@
-import { serial, text, pgTable, pgSchema, varchar, integer } from "drizzle-orm/pg-core";
+import { serial, text, pgTable, pgSchema, varchar, integer,PgArray } from "drizzle-orm/pg-core";
 
 
 export const AIOutput = pgTable('aiOutput',{
@@ -36,3 +36,6 @@ export const UserAnswer = pgTable('userAnswer',{
     createdAt:varchar('createdAt'),
 
 })
+
+
+

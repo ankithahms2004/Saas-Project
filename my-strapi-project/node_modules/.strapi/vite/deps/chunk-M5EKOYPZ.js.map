@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../escape-string-regexp/index.js"],
+  "sourcesContent": ["'use strict';\n\nmodule.exports = string => {\n\tif (typeof string !== 'string') {\n\t\tthrow new TypeError('Expected a string');\n\t}\n\n\t// Escape characters with special meaning either inside or outside character sets.\n\t// Use a simple backslash escape when it’s always valid, and a \\unnnn escape when the simpler form would be disallowed by Unicode patterns’ stricter grammar.\n\treturn string\n\t\t.replace(/[|\\\\{}()[\\]^$+*?.]/g, '\\\\$&')\n\t\t.replace(/-/g, '\\\\x2d');\n};\n"],
+  "mappings": ";;;;;AAAA;AAAA;AAAA;AAEA,WAAO,UAAU,YAAU;AAC1B,UAAI,OAAO,WAAW,UAAU;AAC/B,cAAM,IAAI,UAAU,mBAAmB;AAAA,MACxC;AAIA,aAAO,OACL,QAAQ,uBAAuB,MAAM,EACrC,QAAQ,MAAM,OAAO;AAAA,IACxB;AAAA;AAAA;",
+  "names": []
+}

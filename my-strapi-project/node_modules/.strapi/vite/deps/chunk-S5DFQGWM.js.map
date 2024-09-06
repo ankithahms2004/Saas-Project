@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../lodash/_arrayIncludesWith.js"],
+  "sourcesContent": ["/**\n * This function is like `arrayIncludes` except that it accepts a comparator.\n *\n * @private\n * @param {Array} [array] The array to inspect.\n * @param {*} target The value to search for.\n * @param {Function} comparator The comparator invoked per element.\n * @returns {boolean} Returns `true` if `target` is found, else `false`.\n */\nfunction arrayIncludesWith(array, value, comparator) {\n  var index = -1,\n      length = array == null ? 0 : array.length;\n\n  while (++index < length) {\n    if (comparator(value, array[index])) {\n      return true;\n    }\n  }\n  return false;\n}\n\nmodule.exports = arrayIncludesWith;\n"],
+  "mappings": ";;;;;AAAA;AAAA;AASA,aAAS,kBAAkB,OAAO,OAAO,YAAY;AACnD,UAAI,QAAQ,IACR,SAAS,SAAS,OAAO,IAAI,MAAM;AAEvC,aAAO,EAAE,QAAQ,QAAQ;AACvB,YAAI,WAAW,OAAO,MAAM,KAAK,CAAC,GAAG;AACnC,iBAAO;AAAA,QACT;AAAA,MACF;AACA,aAAO;AAAA,IACT;AAEA,WAAO,UAAU;AAAA;AAAA;",
+  "names": []
+}
