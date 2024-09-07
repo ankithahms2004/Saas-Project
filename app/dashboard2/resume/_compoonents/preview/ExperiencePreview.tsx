@@ -5,7 +5,7 @@ const ExperiencePreview = ({resumeInfo}:any) => {
     <div className='my-6'>
         <h2 className='text-center font-bold text-sm mb-2'>Professional Experience</h2>
         <hr className='border-[1.5px] my-2'/>
-        {resumeInfo?.Experience?.map((experience:any,index:any)=>(
+        {resumeInfo?.experience?.map((experience:any,index:any)=>(
             <div key={index} className='my-5'>
                 <h2 className='text-sm font-bold'><li>{experience?.title}</li></h2>
                 <h2 className='text-xs flex justify-between'>{experience?.companyName}, 

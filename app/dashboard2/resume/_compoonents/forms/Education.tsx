@@ -7,7 +7,6 @@ import { LoaderCircle } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import React, { useContext, useEffect, useState } from 'react'
 
-import GlobalApi from '@/app/dashboard2/_service/GlobalApi'
 
 const Education = ({enabledNext}:any) => {
     const [loading,setLoading]=useState(false);
@@ -52,31 +51,13 @@ const Education = ({enabledNext}:any) => {
       },[educationalList])
 
       const handleChange=(event:any,index:any)=>{
-        enabledNext(false)
         const newEntries=educationalList.slice();
         const {name,value}=event.target;
         newEntries[index][name]=value;
         setEducationalList(newEntries);
       }
 
-      const onSave=()=>{
-        setLoading(true)
-        const data={
-          data:{
-            education:educationalList.map(({ id, ...rest }:any) => rest)
-          }
-        }
-    
-        GlobalApi.UpdateResumeDetail(params.resumeId,data).then(resp=>{
-          console.log(resp);
-          setLoading(false)
-          enabledNext(true)
-        },(error)=>{
-          setLoading(false);
-          
-        })
-    
-      }
+      
   return (
     <div>
         <div className='p-5 shadow-lg rounded-lg border-t-secondary border-t-4 mt-10'>
@@ -136,9 +117,7 @@ const Education = ({enabledNext}:any) => {
             <Button onClick={RemoveEducation} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'> - Remove</Button>
 
             </div>
-            <Button className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg' disabled={loading} onClick={()=>onSave()}>
-            {loading?<LoaderCircle className='animate-spin' />:'Save'}    
-            </Button>
+            
         </div>
     </div>
   )

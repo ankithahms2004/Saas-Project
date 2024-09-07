@@ -11,12 +11,11 @@ import {
   } from "@/components/ui/dialog"
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { v4 as uuidv4 } from 'uuid';
 
 import { useUser } from '@clerk/nextjs'
 
 import { useRouter } from 'next/navigation'
-import GlobalApi from '@/app/dashboard2/_service/GlobalApi'
+import Link from 'next/link'
 
 
 
@@ -31,29 +30,7 @@ const AddResume = () => {
 
     const onCreate= async ()=>{
         setLoading(true)
-        const uuid=uuidv4();
-        const data = {
-          data:{
-            title:resumeTitle,
-            resumeId:uuid,
-            userEmail:user?.primaryEmailAddress?.emailAddress,
-            userName:user?.fullName,
-          }
-        }
-        GlobalApi.CreateNewResume(data).then(resp=>{
-          if(resp)
-          {
-            setOpenDialog(false);
-            setLoading(false)
-            router.push('/dashboard2/resume/'+resp.data.data.documentId+"/edit")
-
-          }
-        },(error)=>{
-          setLoading(false)
-        })
-        
-          
-          
+        setLoading(false)
     }
 
   return (
@@ -76,10 +53,10 @@ const AddResume = () => {
       </DialogDescription>
       <div className='flex justify-end gap-5'>
         <Button onClick={()=>setOpenDialog(false)} className='bg-white shadow-md  hover:shadow-lg hover:bg-white rounded-2xl'>Cancel</Button>
-        <Button disabled={!resumeTitle||loading}  onClick={()=>onCreate()} className='bg-white shadow-md hover:shadow-lg hover:text-white hover:bg-primary rounded-2xl'>{loading?
+       <Link href={{pathname:'/dashboard2/resume/'+resumeTitle+'/edit',query:{title:resumeTitle},}}><Button disabled={!resumeTitle||loading}  onClick={()=>onCreate()} className='bg-white shadow-md hover:shadow-lg hover:text-white hover:bg-primary rounded-2xl'>{loading?
                     <Loader2 className='animate-spin' /> :'Create'   
                 }
-                   </Button>
+                   </Button></Link>
       </div>
     </DialogHeader>
   </DialogContent>

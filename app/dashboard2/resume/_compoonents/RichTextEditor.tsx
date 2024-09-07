@@ -17,19 +17,15 @@ import { ResumeInfoContext } from '../../_context/ResumeInfoContext';
 import { LoaderCircle } from 'lucide-react';
 import { chatSession } from '@/utils/GeminiAIResumeModel'
 
-const RichTextEditor = ({onRichTextEditorChange,index,defaultValue}:any) => {
+const RichTextEditor = ({onRichTextEditorChange,index,defaultValue,title}:any) => {
   const [value,setValue]=useState<any>(defaultValue);
   const {resumeInfo,setResumeInfo}=useContext(ResumeInfoContext)
     const [loading,setLoading]=useState<any>(false);
 
     const GenerateSummeryFromAI=async()=>{
-      if(!resumeInfo?.experience[index].title){
-        alert("Please Add Position Title");
-        return ;
-      }
+      console.log(title)
       setLoading(true)
-        const result = await chatSession.sendMessage("position Title : "+resumeInfo?.experience[index].title+" , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array)")
-        console.log(result.response.text());
+        const result = await chatSession.sendMessage("position Title : "+title+" , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array)");
         const resp=result.response.text()
         setValue(resp.replace('{','').replace('"experience": ','').replace('[','').replace('"experience_bullets": ','').replace(']}','').replace(']','').replace('}',''));
         setLoading(false)

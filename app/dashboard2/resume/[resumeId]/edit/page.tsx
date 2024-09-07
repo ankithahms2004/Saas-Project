@@ -7,26 +7,22 @@ import { UserButton } from '@clerk/nextjs';
 import Image from 'next/image'
 import { ResumeInfoContext } from '@/app/dashboard2/_context/ResumeInfoContext';
 
-import GlobalApi from '@/app/dashboard2/_service/GlobalApi';
+
+import dummy from '@/app/dashboard2/_data/dummy';
 
 const EditResume = () => {
   const [resumeInfo,setResumeInfo]=useState<any>();
   const {resumeId}=useParams();
   useEffect(()=>{
-       
-    GetResumeInfo();
+       setResumeInfo(dummy)
+    
 },[])
-    const GetResumeInfo=()=>{
-      GlobalApi.GetResumeById(resumeId).then(resp=>{
-        console.log(resp.data.data);
-        setResumeInfo(resp.data.data);
-      })
-  }
+  
 
   return (
     <>
     
-    <div className='shadow-lg flex justify-between pr-5'>
+    <div id='no-print' className='shadow-lg flex justify-between pr-5'>
         <Image src={'/logo.svg'} alt='logo' width={160} height={100} className='p-3'/>
         <UserButton/>
     </div>

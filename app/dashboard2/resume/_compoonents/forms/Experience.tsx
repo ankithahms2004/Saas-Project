@@ -2,12 +2,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import React, { useContext, useEffect, useState } from 'react'
 import RichTextEditor from '../RichTextEditor';
-import { Editor } from '@toast-ui/react-editor';
 import { ResumeInfoContext } from '@/app/dashboard2/_context/ResumeInfoContext';
 import { LoaderCircle } from 'lucide-react';
 
 import { useParams } from 'next/navigation';
-import GlobalApi from '@/app/dashboard2/_service/GlobalApi';
 
 
 
@@ -65,53 +63,30 @@ const Experience = ({enabledNext}:any) => {
         const newEntries=experienceList.slice();
         const {name,value}=event.target;
         newEntries[index][name]=value;
-        console.log(newEntries[0])
+       
         setExperienceList(newEntries);
     }
 
     const handleRichTextEditor=(e:any,name:any,index:any)=>{
-        enabledNext(false)
+        enabledNext(true)
         const newEntries=experienceList.slice();
         newEntries[index][name]=e.target.value;
        
         setExperienceList(newEntries);
     }
-    useEffect(()=>{
-        resumeInfo?.Experience.length>0&&setExperienceList(resumeInfo?.Experience)
-        
-    },[])
+    
 
 
     useEffect(()=>{
-    //   console.log(resumeInfo?.experience[0]?.city)
+    
         setResumeInfo({
             ...resumeInfo,
-            Experience:experienceList
+            experience:experienceList
         });
-     console.log(experienceList[0].title)
+    //  console.log(experienceList[1].title)
     },[experienceList]);
 
-    // const universityNamesArray  = experienceList.map((edu:any) => edu.title);
-    // const universityNamesJson = JSON.stringify(universityNamesArray);
-    const onSave=()=>{
-        setLoading(true)
-        const data={
-            data:{
-                Experience:experienceList.map(({ id, ...rest }:any) => rest)
-            }
-        }
-
-         console.log(experienceList)
-
-        GlobalApi.UpdateResumeDetail(params?.resumeId,data).then(res=>{
-            console.log(res);
-            setLoading(false);
-           enabledNext(true)
-        },(error)=>{
-            setLoading(false);
-        })
-
-    }
+    
     
 
 
@@ -165,7 +140,7 @@ const Experience = ({enabledNext}:any) => {
                             />
                         </div>
                         <div className='col-span-2'>
-                       <RichTextEditor  defaultValue={item?.workSummery} index={index} onRichTextEditorChange={(event:any)=>handleRichTextEditor(event,'workSummery',index)} />
+                       <RichTextEditor title={experienceList[index].title} defaultValue={item?.workSummery} index={index} onRichTextEditorChange={(event:any)=>handleRichTextEditor(event,'workSummery',index)} />
                        </div>
                     </div>
                 </div>
@@ -178,10 +153,7 @@ const Experience = ({enabledNext}:any) => {
          <Button  onClick={AddNewExperience} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'>+ Add More Experience</Button>
          <Button  onClick={RemoveExperience} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'>Remove</Button>
             </div>
-            <Button onClick={()=>onSave()} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg' type="submit"
-                disabled={loading}>
-                    {loading?<LoaderCircle className='animate-spin' />:'Save'}
-                    </Button>
+            
          </div>
     </div>
     {/* <div>

@@ -14,13 +14,17 @@ import { useRouter } from 'next/navigation';
 
 const FormSection = () => {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
-  const [enabledNext, setEnableNext] = useState(false);
+  const [enabledNext, setEnableNext] = useState(true);
   const {resumeId}=useParams();
+
+  const HandleDownload=()=>{
+    window.print();
+ }
 
   const router = useRouter();
   return (
-    <div>
-      <div className='flex justify-end mt-3 gap-5'>
+    <div id='no-print' >
+      <div id='no-print' className='flex justify-end mt-3 gap-5'>
         <Link href={'/dashboard2'}>
           <Button className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'>
             <Home />Home
@@ -28,15 +32,15 @@ const FormSection = () => {
         </Link>
       </div>
       <div className='flex gap-3'>
-        {activeFormIndex > 1 && (
-          <Button
-            className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'
-            size="sm"
-            onClick={() => setActiveFormIndex(activeFormIndex - 1)}
-          >
-            <ArrowLeft />
-          </Button>
-        )}
+        {activeFormIndex > 1 
+          // <Button
+          //   className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'
+          //   size="sm"
+          //   onClick={() => setActiveFormIndex(activeFormIndex - 1)}
+          // >
+          //   <ArrowLeft />
+          // </Button>
+        }
         {activeFormIndex < 5 ? (
           <Button
             className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'
@@ -48,14 +52,14 @@ const FormSection = () => {
             <ArrowRight />
           </Button>
         ) : (
-          <Link href={'/dashboard2/my-resume/'+resumeId+'/view'}>
-          <Button
+          
+          <Button onClick={HandleDownload}
             className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'
             size="sm"
             
           >
             Download
-          </Button></Link>
+          </Button>
         )}
       </div>
       {activeFormIndex === 1 ? (

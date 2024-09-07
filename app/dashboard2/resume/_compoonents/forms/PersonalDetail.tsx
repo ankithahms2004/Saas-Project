@@ -1,5 +1,4 @@
 import { ResumeInfoContext } from '@/app/dashboard2/_context/ResumeInfoContext'
-import GlobalApi from '@/app/dashboard2/_service/GlobalApi';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input'
 import { LoaderCircle } from 'lucide-react';
@@ -10,7 +9,7 @@ import React, { useContext, useEffect, useState } from 'react'
 
 const PersonalDetail = ({enabledNext}:any) => {
     const params=useParams();
-    // console.log(params.resumeId)
+   
     const {resumeInfo,setResumeInfo} = useContext(ResumeInfoContext)
     const [formData,setFormData]=useState<any>();
     const [loading,setLoading]=useState(false);
@@ -20,7 +19,7 @@ const PersonalDetail = ({enabledNext}:any) => {
     },[])
 
     const handleInputChange=(e:any)=>{
-        enabledNext(false)
+        e.preventDefault();
         const {name,value}=e.target;
 
         setFormData({
@@ -31,32 +30,16 @@ const PersonalDetail = ({enabledNext}:any) => {
             ...resumeInfo,
             [name]:value
         })
-        // console.log(resumeInfo.address)
+        
     }
-        const onSave=async(e:any)=>{
-            e.preventDefault();
-            setLoading(true)
-            const data={
-                data:formData
-            }
-            GlobalApi.UpdateResumeDetail(params?.resumeId,data).then((resp:any)=>{
-                console.log(resp);
-                setLoading(false);
-                enabledNext(true);
-                
-                
-            },(error)=>{
-                console.log(error)
-                setLoading(false);
-            })
-
-        }
+       
     
   return (
     <div className='p-5 shadow-lg rounded-lg border-t-secondary border-t-4 mt-10'>
          <h2 className='font-bold text-lg'>Personal Detail</h2>
          <p>Get Started with the basic information</p>
-         <form onSubmit={onSave}>
+         <p>(you can use the sample template that is provided)</p>
+         <form>
             <div className='grid grid-cols-2 rounded-md mt-5 gap-3'>
                 <div>
                     <label className='text-sm'>First Name</label>
@@ -94,10 +77,7 @@ const PersonalDetail = ({enabledNext}:any) => {
                 </div>
             </div>
             <div className='mt-3 flex justify-end'>
-                <Button className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg' type="submit"
-                disabled={loading}>
-                    {loading?<LoaderCircle className='animate-spin' />:'Save'}
-                    </Button>
+                
             </div>
         </form>
     </div>

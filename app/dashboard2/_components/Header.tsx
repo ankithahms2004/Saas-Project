@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { UserButton, useUser } from '@clerk/nextjs'
 import AddResume from './AddResume'
 
-import ResumeCardItem from './ResumeCardItem'
-import GlobalApi from '../_service/GlobalApi'
+
+
 
 
 const Header = () =>{
@@ -13,19 +13,12 @@ const Header = () =>{
 
     const {user} = useUser();
     useEffect(()=>{
-      user&&GetResumesList()
+      user
     },[user])
 
-  const GetResumesList=()=>{
-    GlobalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress)
-    .then(resp=>{
-      console.log(resp.data.data)
-      setResumeList(resp.data.data);
-    })
-       }  
           return (
     <>
-    <div className='shadow-lg flex justify-between pr-5'>
+    <div id='no-print' className='shadow-lg flex justify-between pr-5'>
         <Image src={'/logo.svg'} alt='logo' width={160} height={100} className='p-3'/>
         <UserButton/>
     </div>
@@ -37,9 +30,6 @@ const Header = () =>{
       mt-10
       '>
         <AddResume/>
-        {resumeList&&resumeList.map((resume:any,index:any)=>(
-            <ResumeCardItem resume={resume} key={index} refreshData={GetResumesList}/>
-        ))}
         
         {/* <AddResume/>
         {resumeList.length>0?resumeList.map((resume,index)=>(

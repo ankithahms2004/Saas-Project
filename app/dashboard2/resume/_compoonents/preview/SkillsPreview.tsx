@@ -1,8 +1,12 @@
+import { Button } from '@/components/ui/button'
 import React from 'react'
 
 const SkillsPreview = ({resumeInfo}:any) => {
+  
+
   return (
-    <div>
+    <>
+    <div id='print-area'>
         <div className='my-6'>
     <h2 className='text-center font-bold text-sm mb-2'>Skills</h2>
     <hr className='border-[1.5px] my-2'/>
@@ -14,7 +18,9 @@ const SkillsPreview = ({resumeInfo}:any) => {
         ))}
     </div>
     </div>
+   
     </div>
+    </>
   )
 }
 

@@ -6,7 +6,7 @@ import { LoaderCircle } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import React, { useContext, useEffect, useState } from 'react'
 
-import GlobalApi from '@/app/dashboard2/_service/GlobalApi'
+
 
 const Skills = ({enabledNext}:any) => {
     const [skillsList,setSkillsList]=useState<any>([{
@@ -26,7 +26,6 @@ const Skills = ({enabledNext}:any) => {
         setSkillsList((skillsList: string | any[])=>skillsList.slice(0,-1))
     }
     const handleChange=(index:any,event:any,)=>{
-        enabledNext(false)
         const newEntries:any=skillsList.slice();
         const {name,value}=event.target;
         newEntries[index][name]=value;
@@ -45,27 +44,10 @@ const Skills = ({enabledNext}:any) => {
         })
     },[skillsList])
 
-    const onSave=()=>{
-        setLoading(true);
-        const data={
-            data:{
-                skills:skillsList.map(({ id, ...rest }:any) => rest)
-            }
-        }
-
-        GlobalApi.UpdateResumeDetail(resumeId,data)
-        .then(resp=>{
-            console.log(resp);
-            setLoading(false);
-           enabledNext(true)
-        },(error)=>{
-            setLoading(false);
-           
-        })
-    }
+   
   return (
     <>
-        <div className='p-5 shadow-lg rounded-lg border-t-secondary border-t-4 mt-10'>
+        <div id='no-print' className='p-5 shadow-lg rounded-lg border-t-secondary border-t-4 mt-10'>
          <h2 className='font-bold text-lg'>Skills</h2>
          <p>Add your top skills</p>
          
@@ -88,9 +70,7 @@ const Skills = ({enabledNext}:any) => {
             <Button onClick={RemoveSkills} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'> - Remove</Button>
 
             </div>
-            <Button className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg' disabled={loading} onClick={()=>onSave()}>
-            {loading?<LoaderCircle className='animate-spin' />:'Save'}    
-            </Button>
+           
         </div>
          </div>
          </>

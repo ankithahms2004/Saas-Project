@@ -3,7 +3,7 @@ import Header from './_components/Header'
 
 const page = () => {
   return (
-    <div>
+    <div  id='no-print'>
         <Header/>
         
 
