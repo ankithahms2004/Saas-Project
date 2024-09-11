@@ -1,4 +1,4 @@
-import { serial, text, pgTable, pgSchema, varchar, integer,PgArray } from "drizzle-orm/pg-core";
+import { serial, text, pgTable, pgSchema, varchar, integer,PgArray, boolean } from "drizzle-orm/pg-core";
 
 
 export const AIOutput = pgTable('aiOutput',{
@@ -37,5 +37,17 @@ export const UserAnswer = pgTable('userAnswer',{
 
 })
 
+export const JsonForms = pgTable('jsonForms',{
+    id:serial('id').primaryKey(),
+    jsonform:text('jsonform'),
+    createdBy:varchar('createdBy'),
+    createdAt:varchar('createdAt'),
+})
 
-
+export const userResponses = pgTable('userResponses',{
+    id:serial('id').primaryKey(),
+    jsonResponse:text('jsonResponse').notNull(),
+    createdBy:varchar('createdBy').default('anonymous'),
+    createdAt:varchar('createdAt'),
+    formRef:integer('formRef').references(()=>JsonForms?.id),
+})

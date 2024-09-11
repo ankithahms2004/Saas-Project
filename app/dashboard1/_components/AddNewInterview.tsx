@@ -101,7 +101,7 @@ const AddNewInterview = () => {
         </div>
         <div className="mt-10 my-3 ">
             <label className="ml-3">Years of Experience</label>
-            <Input className="rounded-full border" placeholder="Ex.5" max={100} type="any" required onChange={(event)=>setJobExperience(event.target.value)}/>
+            <Input className="rounded-full border-2" placeholder="Ex.5" max={100} type="any" required onChange={(event)=>setJobExperience(event.target.value)}/>
         </div>
        </div>
         <div className="mt-10 mx-3 flex gap-5 justify-end">

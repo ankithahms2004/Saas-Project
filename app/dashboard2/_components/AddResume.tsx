@@ -49,7 +49,7 @@ const AddResume = () => {
       <DialogTitle>Create New Resume</DialogTitle>
       <DialogDescription>
         <p>Add a title for your new resume</p>
-        <Input className='my-2' placeholder='Ex.Full Stack resume' onChange={(e:any)=>setResumeTitle(e.target.value)}/>
+        <Input className='my-2 border-2' placeholder='Ex.Full Stack resume' onChange={(e:any)=>setResumeTitle(e.target.value)}/>
       </DialogDescription>
       <div className='flex justify-end gap-5'>
         <Button onClick={()=>setOpenDialog(false)} className='bg-white shadow-md  hover:shadow-lg hover:bg-white rounded-2xl'>Cancel</Button>

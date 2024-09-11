@@ -3,7 +3,7 @@ import { FileClock, Home, Settings, WalletCards } from 'lucide-react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
-import UsageTrack from './UsageTrack'
+// import UsageTrack from './UsageTrack'
 import Link from 'next/link'
 
 
@@ -55,7 +55,7 @@ useEffect(()=>{
             ))}
         </div>
         <div className='absolute bottom-10 left-0 w-full'>
-            <UsageTrack/>
+            {/* <UsageTrack/> */}
         </div>
     </div>
   )
