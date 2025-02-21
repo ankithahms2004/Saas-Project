@@ -1,4 +1,5 @@
 import { serial, text, pgTable, pgSchema, varchar, integer,PgArray, boolean } from "drizzle-orm/pg-core";
+import { arrayBuffer } from "stream/consumers";
 
 
 export const AIOutput = pgTable('aiOutput',{
@@ -50,4 +51,34 @@ export const userResponses = pgTable('userResponses',{
     createdBy:varchar('createdBy').default('anonymous'),
     createdAt:varchar('createdAt'),
     formRef:integer('formRef').references(()=>JsonForms?.id),
+})
+
+export const resumeInfomation = pgTable('resumeInfomation',{
+    id:serial('id').primaryKey(),
+    Jobtitle:varchar('Jobtitle'),
+    firstName:varchar('firstName'),
+    lastName:varchar('lastName'),
+    title:varchar('title'),
+    address:varchar('address'),
+    phone:varchar('phone'),
+    email:varchar('email'),
+    summary:varchar('summary'),
+    // positiontitle:varchar('positiontitle'),
+    // companyName:varchar('companyName'),
+    // city:varchar('city'),
+    // state:varchar('state'),
+    // startDate:varchar('startDate'),
+    // endDate:varchar('endDate'),
+    // experienceSummary:varchar('experienceSummary'),
+    experience:varchar('experience'),
+    // universityName:varchar('universityName'),
+    // degree:varchar('degree'),
+    // major:varchar('major'),
+    // educationstartDate:varchar('educationstartDate'),
+    // educationendDate:varchar('educationendDate'),
+    // description:varchar('description'),
+    education:varchar('education'),
+    skills:varchar('skills'),
+    createdBy:varchar('createdBy').notNull(),
+    createdAt:varchar('createdAt'),
 })

@@ -36,10 +36,10 @@ import { eq } from 'drizzle-orm'
 
     return (
         <div className='my-10'>
-            <h2 className='text-slate-700 text-2xl font-bold'>Let's Get Started</h2>
+            <h2 className='text-slate-700 text-2xl font-bold'>Let's Get Started : </h2>
             <div className='grid grid-cold-1 md:grid-cols-2 gap-10'>
                 <div className='flex gap-5 flex-col my-5 '>
-                    <div className='p-5 rounded-lg border shadow-md flex flex-col gap-5'>
+                    <div className='p-5 rounded-lg border shadow-md bg-blue-50 border-blue-200 flex flex-col gap-5'>
                         <h2 className='text-lg'><strong>Job Role/Job Position : </strong>{interviewData?.jobPosition}</h2>
                         <h2 className='text-lg'><strong>Job Description/Tech Stack : </strong>{interviewData?.jobDesc}</h2>
                         <h2 className='text-lg'><strong>Years of Experience : </strong>{interviewData?.jobExperience}</h2>

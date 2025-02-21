@@ -4,7 +4,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import RichTextEditor from '../RichTextEditor';
 import { ResumeInfoContext } from '@/app/dashboard2/_context/ResumeInfoContext';
 import { LoaderCircle } from 'lucide-react';
-
+import { db } from '@/utils/db';
+import { eq } from 'drizzle-orm';
+import { useUser } from '@clerk/nextjs';
+import { resumeInfomation } from '@/utils/schema'
 import { useParams } from 'next/navigation';
 
 
@@ -37,7 +40,7 @@ const Experience = ({enabledNext}:any) => {
     const [loading,setLoading]=useState(false);
    
     const params = useParams();
-
+    const {user} = useUser();
     const AddNewExperience=()=>{
     
         setExperienceList([...experienceList,{
@@ -73,6 +76,7 @@ const Experience = ({enabledNext}:any) => {
         newEntries[index][name]=e.target.value;
        
         setExperienceList(newEntries);
+        console.log(setExperienceList)
     }
     
 
@@ -86,7 +90,16 @@ const Experience = ({enabledNext}:any) => {
     //  console.log(experienceList[1].title)
     },[experienceList]);
 
-    
+    const handleInputChange= async()=>{
+                setLoading(true)
+                const result = await db.update(resumeInfomation).set({
+                    experience:experienceList,
+                      }).where(eq(resumeInfomation.createdBy,user?.primaryEmailAddress?.emailAddress as string))
+                      
+                console.log(result)
+                setLoading(false)
+                // window.location.reload();
+            }
     
 
 
@@ -96,7 +109,7 @@ const Experience = ({enabledNext}:any) => {
          <h2 className='font-bold text-lg'>Proffesional Experience</h2>
          <p>Add your previous Job experience</p>
          <div>
-            {experienceList.map((item:any,index:any)=>(
+            {resumeInfo?.experience?.map((item:any,index:any)=>(
                 <div key={index}>
                     <div className='grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg'>
                     <div>
@@ -140,7 +153,7 @@ const Experience = ({enabledNext}:any) => {
                             />
                         </div>
                         <div className='col-span-2'>
-                       <RichTextEditor title={experienceList[index].title} defaultValue={item?.workSummery} index={index} onRichTextEditorChange={(event:any)=>handleRichTextEditor(event,'workSummery',index)} />
+                       <RichTextEditor title={item?.title} defaultValue={item?.workSummery} index={index} onRichTextEditorChange={(event:any)=>handleRichTextEditor(event,'workSummery',index)} />
                        </div>
                     </div>
                 </div>
@@ -153,6 +166,12 @@ const Experience = ({enabledNext}:any) => {
          <Button  onClick={AddNewExperience} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'>+ Add More Experience</Button>
          <Button  onClick={RemoveExperience} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'>Remove</Button>
             </div>
+            <div className='mt-3 flex justify-end'>
+                        <Button onClick={()=>handleInputChange()} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg' type="submit"
+                        disabled={loading}>
+                            {loading?<LoaderCircle className='animate-spin' />:'Save'}
+                            </Button>
+                    </div>
             
          </div>
     </div>

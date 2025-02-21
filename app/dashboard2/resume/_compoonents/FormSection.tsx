@@ -17,9 +17,9 @@ const FormSection = () => {
   const [enabledNext, setEnableNext] = useState(true);
   const {resumeId}=useParams();
 
-  const HandleDownload=()=>{
-    window.print();
- }
+//   const HandleDownload=()=>{
+//     window.print();
+//  }
 
   const router = useRouter();
   return (
@@ -31,7 +31,8 @@ const FormSection = () => {
           </Button>
         </Link>
       </div>
-      <div className='flex gap-3'>
+      {/* <div className='flex gap-3'> */}
+        
         {activeFormIndex > 1 
           // <Button
           //   className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'
@@ -41,27 +42,42 @@ const FormSection = () => {
           //   <ArrowLeft />
           // </Button>
         }
-        {activeFormIndex < 5 ? (
-          <Button
-            className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'
-            disabled={!enabledNext}
-            size="sm"
-            onClick={() => setActiveFormIndex(activeFormIndex + 1)}
-          >
-            Next
-            <ArrowRight />
-          </Button>
-        ) : (
+        {/* {activeFormIndex < 6? (
+          <><Button className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg' size="sm"
+            onClick={() => setActiveFormIndex(activeFormIndex - 1)}> <ArrowLeft /> </Button><Button
+              className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'
+              disabled={!enabledNext}
+              size="sm"
+              onClick={() => setActiveFormIndex(activeFormIndex + 1)}
+            >
+              Next
+              <ArrowRight />
+            </Button></>
           
-          <Button onClick={HandleDownload}
-            className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'
-            size="sm"
+        ) : ( */}
+          
+          {/* // <Button onClick={HandleDownload} */}
+          {/* //   className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'
+          //   size="sm"
             
-          >
-            Download
-          </Button>
-        )}
-      </div>
+          // >
+          //   Download
+          // </Button>
+        
+      </div> */}
+
+
+<div className='flex gap-2'>
+            {activeFormIndex>1&&activeFormIndex<4
+            &&<Button className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg' size="sm" 
+            onClick={()=>setActiveFormIndex(activeFormIndex-1)}> <ArrowLeft/> </Button> }
+           {activeFormIndex<5 ?<Button 
+            // disabled={!enableNext}
+            className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg' size="sm"
+            onClick={()=>setActiveFormIndex(activeFormIndex+1)}
+            > Next 
+            <ArrowRight/> </Button>:""} 
+          </div>
       {activeFormIndex === 1 ? (
         <PersonalDetail enabledNext={(v:any) => setEnableNext(v)} />
       ) : activeFormIndex === 2 ? (

@@ -10,11 +10,14 @@ import FormList from './_components/FormList'
 const Dashboard = () => {
   return (
     <>
-    <div className='md:w-60  hidden md:block fixed '>
-         <SideNav/>
+    <div className='text-center'>
+         {/* <SideNav/> */}
     </div>
     <div className='p-10 text-center'>
     <h2 className='font-semibold text-slate-700 text-3xl'>Dashboard
+      <p className='font-semibold text-slate-500 text-sm mt-3'>Note:  Get your desired forms created in just seconds...<br></br>
+        Along with the responses in the downloadable excel files
+      </p>
     <CreateForm/>
     </h2>
     <FormList/>

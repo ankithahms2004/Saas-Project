@@ -23,7 +23,7 @@ const InterviewList = () => {
    
   return (
     <div>
-      <h2 className='font-medium text-xl text-slate-700'>Previous Mock Interview</h2>
+      <h2 className='font-medium text-xl text-slate-700'>Previous Mock Interviews</h2>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-3'>
         {interviewList&&interviewList.map((interview:any,index:any)=>(
           <InterviewItemCard key={index}

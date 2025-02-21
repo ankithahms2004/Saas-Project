@@ -41,7 +41,7 @@ export default function Home() {
       <h1 className="font-bold mt-6 text-slate-300">Create your own Content, CV, Form's and more in 
       just seconds<br/>  not hours...</h1>
       <div className="mt-10 md:mt-6">
-      <h2 className="mb-0 text-slate-300">What do you want to do?.</h2>
+      <h2 className="mb-0 text-slate-300">What do you want to do?...</h2>
       <h2><Link href={'/dashboard'}><Button className='mt-2 text-white w-80 justify-center bg-slate-500  rounded-xl  hover:bg-slate-500 transition duration-500 hover:scale-110'>Create Your own Content using AI</Button></Link></h2>
       <h2><Link href={'/dashboard1'}><Button className='mt-6 w-80 text-white bg-slate-500  rounded-xl justify-center transition duration-500  hover:bg-slate-500 hover:scale-110'>Get your free Mock Interview done using AI </Button></Link></h2>
       <h2><Link href={'/dashboard2'}><Button className='mt-6 w-80 text-white bg-slate-500  rounded-xl justify-center transition duration-500  hover:bg-slate-500 hover:scale-110'>Build your CV in just seconds using AI</Button></Link></h2>

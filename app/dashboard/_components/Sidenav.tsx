@@ -15,21 +15,21 @@ const MenuList=[{
     icon:Home,
     path:'/dashboard'
 },
-{
-    name:'History',
-    icon:FileClock,
-    path:'/dashboard/history'
-},
-{
-    name:'Billing',
-    icon:WalletCards,
-    path:'/dashboard/billing'
-},
-{
-    name:'Setting',
-    icon:Settings,
-    path:'/dashboard/settings'
-},
+// {
+//     name:'History',
+//     icon:FileClock,
+//     path:'/dashboard/history'
+// },
+// {
+//     name:'Billing',
+//     icon:WalletCards,
+//     path:'/dashboard/billing'
+// },
+// {
+//     name:'Setting',
+//     icon:Settings,
+//     path:'/dashboard/settings'
+// },
 ]
 
 const path=usePathname();

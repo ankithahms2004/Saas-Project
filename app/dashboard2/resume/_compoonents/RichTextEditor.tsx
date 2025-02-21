@@ -27,6 +27,7 @@ const RichTextEditor = ({onRichTextEditorChange,index,defaultValue,title}:any) =
       setLoading(true)
         const result = await chatSession.sendMessage("position Title : "+title+" , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array)");
         const resp=result.response.text()
+        console.log(resp)
         setValue(resp.replace('{','').replace('"experience": ','').replace('[','').replace('"experience_bullets": ','').replace(']}','').replace(']','').replace('}',''));
         setLoading(false)
     }

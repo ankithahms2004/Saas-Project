@@ -42,7 +42,7 @@ const Feedback = ({params}:any) => {
         <h2 className='text-sm text-slate-500'>Find below interview question with correct answer, Your answer and feedback for improvement</h2>
         {feedbackList&&feedbackList.map((item:any,index:any)=>(
                    <Collapsible key={index} className='mt-7'>
-                   <CollapsibleTrigger className='p-2 gap-7 w-full flex justify-between bg-secondary shadow-sm rounded-md m-2 my-2 text-left'>
+                   <CollapsibleTrigger className='p-2 gap-7 w-full flex justify-between bg-slate-50 shadow-md rounded-md m-2 my-2 text-left'>
                    {item.question}<ChevronsUpDown className='h-4 wi-5'/>
                    </CollapsibleTrigger>
                    <CollapsibleContent>

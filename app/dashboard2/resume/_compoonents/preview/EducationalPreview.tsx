@@ -1,6 +1,38 @@
 import React from 'react'
 
+
+
+
+
+
+
 const EducationalPreview = ({resumeInfo}:any) => {
+//   const [formList,setFormList] = useState<any>([])
+//   const {user} = useUser()
+//   useEffect(()=>{
+//     user&&GetformList()
+//   },[user])
+//   const GetformList = async()=>{
+//   const result = await db.select({
+//     education:resumeInfomation?.education
+//   }).from(resumeInfomation).where(eq(resumeInfomation.createdBy,user?.primaryEmailAddress?.emailAddress as string))
+//   console.log(result[0]?.education);
+//   const parsedData = JSON.parse(`[${result[0]?.education?.replace(/","/g, '","')}]`);
+//   const parseddata = JSON.parse(parsedData);
+//   parseddata.forEach((item: any) => {
+//     console.log(`University Name: ${item.universityName}`);
+//     console.log(`Start Date: ${item.startDate}`);
+//     console.log(`End Date: ${item.endDate}`);
+//     console.log(`Degree: ${item.degree}`);
+//     console.log(`Major: ${item.major}`);
+//     console.log(`Description: ${item.description}`);
+// });
+//    setFormList(result)
+// }
+
+
+
+
   return (
     <div>
         <div className='my-6'>
@@ -8,7 +40,7 @@ const EducationalPreview = ({resumeInfo}:any) => {
     <hr className='border-[1.5px] my-2'/>
     {resumeInfo?.education?.map((education:any,index:any)=>(
         <div key={index} className='my-5'>
-            <h2 className='text-sm font-bold'><li>{education.universityName}</li></h2>
+          <h2 className='text-sm font-bold'><li>{education?.universityName}</li></h2>
             <h2 className='text-xs flex justify-between'>{education?.degree} in {education?.major}
             <span>{education?.startDate} - {education?.endDate}</span>
             </h2>

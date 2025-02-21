@@ -20,7 +20,7 @@ const FormList = () => {
     setFormList(result)
   }
   return (
-    <div className='mt-5 ml-72 grid gap-5 grid-cols-1 md:grid-cols-2'>
+    <div className='mt-8 grid gap-8 grid-cols-2 md:grid-cols-3'>
       {formList.map((form:any,index:any)=>(
         <div>
           <FormListItem jsonForm={JSON.parse(form.jsonform)}

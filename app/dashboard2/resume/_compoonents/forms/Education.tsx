@@ -2,17 +2,21 @@ import { ResumeInfoContext } from '@/app/dashboard2/_context/ResumeInfoContext'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-
+import { db } from '@/utils/db';
+import { eq } from 'drizzle-orm';
+import { useUser } from '@clerk/nextjs';
+import { resumeInfomation } from '@/utils/schema'
 import { LoaderCircle } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import React, { useContext, useEffect, useState } from 'react'
 
 
 const Education = ({enabledNext}:any) => {
-    const [loading,setLoading]=useState(false);
-  const {resumeInfo,setResumeInfo}=useContext(ResumeInfoContext);
-  const params=useParams();
-    const [educationalList,setEducationalList] = useState<any>([{
+      const [loading,setLoading]=useState(false);
+      const {user} = useUser();
+      const {resumeInfo,setResumeInfo}=useContext(ResumeInfoContext);
+      const params=useParams();
+      const [educationalList,setEducationalList] = useState<any>([{
         universityName:'',
         degree:'',
         major:'',
@@ -57,6 +61,17 @@ const Education = ({enabledNext}:any) => {
         setEducationalList(newEntries);
       }
 
+
+      const handleInputChange= async()=>{
+                      setLoading(true)
+                      const result = await db.update(resumeInfomation).set({
+                          education:educationalList,
+                            }).where(eq(resumeInfomation.createdBy,user?.primaryEmailAddress?.emailAddress as string))
+                            
+                      console.log(result)
+                      setLoading(false)
+                      // window.location.reload();
+                  }
       
   return (
     <div>
@@ -65,7 +80,7 @@ const Education = ({enabledNext}:any) => {
          <p>Add your educational details</p>
          </div>
          <div>
-      {educationalList.map((item:any,index:any)=>(
+      {resumeInfo?.education?.map((item:any,index:any)=>(
         <div>
           <div className='grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg'>
             <div className='col-span-2'>
@@ -117,6 +132,12 @@ const Education = ({enabledNext}:any) => {
             <Button onClick={RemoveEducation} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg'> - Remove</Button>
 
             </div>
+            <div className='mt-3 flex justify-end'>
+                        <Button onClick={()=>handleInputChange()} className='gap-4 bg-white shadow-md rounded-xl justify-end hover:bg-white hover:shadow-lg' type="submit"
+                        disabled={loading}>
+                            {loading?<LoaderCircle className='animate-spin' />:'Save'}
+                            </Button>
+                    </div>
             
         </div>
     </div>
