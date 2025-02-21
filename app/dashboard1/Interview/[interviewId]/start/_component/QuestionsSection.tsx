@@ -21,7 +21,7 @@ const QuestionsSection = ({mockInterviewQuestions,activeQuestionIndex}:any) => {
             ))}
         </div>
         <h2 className='my-5 text-md md:text-lg'>{mockInterviewQuestions[activeQuestionIndex]?.question}</h2>
-        <Volume2 className='cursor-pointer' onClick={()=>textToSpeech(mockInterviewQuestions[activeQuestionIndex]?.question)}/>.....
+        <Volume2 className='cursor-pointer' onClick={()=>textToSpeech(mockInterviewQuestions[activeQuestionIndex]?.question)}/>
            <div className='border rounded-lg p-5 bg-blue-100 border-blue-200 mt-20'>
             <h2 className='flex gap-2 items-center text-primary'>
                 <Lightbulb/>
