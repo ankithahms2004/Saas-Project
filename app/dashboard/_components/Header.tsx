@@ -1,5 +1,7 @@
+import { Button } from '@/components/ui/button'
 import { UserButton } from '@clerk/nextjs'
 import { Search } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 const Header = () => {
@@ -9,7 +11,8 @@ const Header = () => {
             <Search/>
             <input type=" text" placeholder='Search...' className='outline-none' />
         </div>
-        <div className='flex gap-5 items-center'>
+        <div className='flex gap-6 items-center'>
+        <Link href={'/'}> <Button className='bg-white shadow-md  hover:shadow-lg hover:bg-white rounded-2xl'><h1>Home</h1></Button></Link>
             <UserButton/>
         </div>
     </div>

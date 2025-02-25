@@ -30,7 +30,7 @@ export default function Page() {
         </a>
 
         <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-          Welcome to AlphaSense a free AI Saas Application 🦑
+          Welcome to <span className="hover:text-5xl hover:underline">Alpha<span className="text-slate-400">Sense</span></span> a free AI Saas Application 🦑
         </h2>
 
         <p className="mt-4 leading-relaxed text-white/90">
@@ -64,7 +64,7 @@ export default function Page() {
           </a>
 
           <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-          Welcome to AlphaSense a free AI Saas Application 🦑
+          Welcome to <span className="hover:text-5xl hover:underline">Alpha<span className="text-slate-400">Sense</span></span> a free AI Saas Application 🦑
           </h1>
 
           <p className="mt-4 leading-relaxed text-gray-500">

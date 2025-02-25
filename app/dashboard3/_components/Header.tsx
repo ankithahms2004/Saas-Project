@@ -21,7 +21,7 @@ const Header = () => {
       <h2 className='hidden md:flex gap-6 items-center font-semibold text-slate-700'> Get your Forms and Responses Created in just seconds...</h2>
         </h1>
         <div className='mt-4 hidden md:flex gap-4 '>
-        <Link href={'/dashboard3'}> <Button className='bg-white shadow-md  hover:shadow-lg hover:bg-white rounded-2xl'><h1>Home</h1></Button></Link>
+        <Link href={'/'}> <Button className='bg-white shadow-md  hover:shadow-lg hover:bg-white rounded-2xl'><h1>Home</h1></Button></Link>
         <Link href={'/dashboard3/responses'}><Button className='bg-white shadow-md  hover:shadow-lg hover:bg-white rounded-2xl'><h1>Responses</h1></Button></Link>
         </div>
         <UserButton/>

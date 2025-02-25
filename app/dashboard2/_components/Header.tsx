@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { UserButton, useUser } from '@clerk/nextjs'
 import AddResume from './AddResume'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 
 
@@ -23,7 +25,11 @@ const Header = () =>{
         <h1 className='hidden md:flex gap-2 items-center font-bold text-slate-800'>Explore the Power of AI - 
       <h2 className='hidden md:flex gap-6 items-center font-semibold text-slate-700'> Get your Resumes Created in just seconds...</h2>
         </h1>
-        <UserButton/>
+        <div className='flex gap-6 items-center'>
+          <Link href={'/'}> <Button className='bg-white shadow-md  hover:shadow-lg hover:bg-white rounded-2xl'><h1>Home</h1></Button></Link>
+
+          <UserButton/>
+        </div>
     </div>
     <div className='p-10 md:px-18 flex lg:px-30'>
     <div>

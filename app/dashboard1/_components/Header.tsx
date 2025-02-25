@@ -1,6 +1,8 @@
 "use client"
+import { Button } from '@/components/ui/button'
 import { UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
 
@@ -24,7 +26,11 @@ const Header = () => {
             <li className={`hover:text-slate-700 hover:font-serif transition-all cursor-pointer hover:underline ${path=='/dashboard1/upgrade'&&'text-slate-700 font-bold'}`}>Upgrade</li>
             <li className={`hover:text-slate-700 hover:font-serif transition-all cursor-pointer hover:underline ${path=='/dashboard1/how'&&'text-slate-700 font-bold'}`}>How it works ?</li>
         </ul> */}
-        <UserButton/>
+        <div className='flex gap-6 items-center'>
+          <Link href={'/'}> <Button className='bg-white shadow-md  hover:shadow-lg hover:bg-white rounded-2xl'><h1>Home</h1></Button></Link>
+
+          <UserButton/>
+        </div>
     </div>
   )
 }
