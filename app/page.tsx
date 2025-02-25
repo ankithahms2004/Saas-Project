@@ -29,7 +29,7 @@ export default function Home() {
      
     <div className="ml-2 md:ml-96 text-center absolute items-center justify-center mt-16 md:mt-0">
    
-      <h1 className="text-4xl text-white font-bold">Welcome to Alpha<span className="text-slate-400">Sense</span></h1>
+      <h1 className="text-4xl text-white font-bold">Welcome to <span className="hover:text-5xl hover:underline cursor-pointer">Alpha<span className="text-slate-400">Sense</span></span></h1>
       <h2 className="text-slate-300">a free AI Saas platform..</h2>
       <div className="items-center flex text-center justify-center mt-10 md:mt-4">
       <Image src={'/logo.svg'} alt='logo' width={160} height={100} className=' '/>
